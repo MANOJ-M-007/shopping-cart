@@ -51,7 +51,7 @@ function AddItemForm({
     if (editingItem) {
       const updatedItem = {
         id: editingItem.id,
-        name,
+        name: name.trim(),
         price: Number(price),
       };
 
@@ -59,7 +59,7 @@ function AddItemForm({
     } else {
       const newItem = {
         id: uuidv4(),
-        name,
+        name: name.trim(),
         price: Number(price),
       };
 
@@ -76,30 +76,80 @@ function AddItemForm({
       onClose={() => setOpenModal(false)}
       fullWidth
       maxWidth="sm"
+      PaperProps={{
+        sx: {
+          borderRadius: 5,
+          p: 1,
+        },
+      }}
     >
-      <DialogTitle>{editingItem ? "Edit Item" : "Add Item"}</DialogTitle>
+      <DialogTitle
+        sx={{
+          fontWeight: 700,
+          fontSize: "1.6rem",
+          pb: 1,
+        }}
+      >
+        {editingItem ? "Edit Item" : "Add New Item"}
+      </DialogTitle>
 
-      <DialogContent>
+      <DialogContent
+        sx={{
+          pt: 1,
+        }}
+      >
         <form onSubmit={handleSubmit}>
-          <Stack spacing={2} mt={1}>
+          <Stack spacing={3}>
             <TextField
               label="Item Name"
-              variant="outlined"
               fullWidth
+              autoFocus
               value={name}
               onChange={(e) => setName(e.target.value)}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "14px",
+                  backgroundColor: "#fff",
+                },
+
+                "& .MuiInputLabel-root": {
+                  backgroundColor: "#fff",
+                  px: 0.5,
+                },
+              }}
             />
 
             <TextField
               label="Price"
               type="number"
-              variant="outlined"
               fullWidth
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "14px",
+                  backgroundColor: "#fff",
+                },
+
+                "& .MuiInputLabel-root": {
+                  backgroundColor: "#fff",
+                  px: 0.5,
+                },
+              }}
             />
 
-            <Button variant="contained" type="submit">
+            <Button
+              variant="contained"
+              type="submit"
+              size="large"
+              sx={{
+                borderRadius: 3,
+                py: 1.4,
+                textTransform: "none",
+                fontWeight: 600,
+                boxShadow: "none",
+              }}
+            >
               {editingItem ? "Update Item" : "Add Item"}
             </Button>
           </Stack>

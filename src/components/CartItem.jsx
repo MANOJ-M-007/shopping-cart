@@ -1,36 +1,82 @@
-import { Card, CardContent, Typography, Button, Stack } from "@mui/material";
+import { Box, Typography, Button, Stack } from "@mui/material";
 
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function CartItem({ item, removeItem, editItem }) {
   return (
-    <Card sx={{ mb: 2 }}>
-      <CardContent>
-        <Typography variant="h6">{item.name}</Typography>
+    <Box
+      sx={{
+        py: 2.5,
+        borderBottom: "1px solid #eef2f7",
+      }}
+    >
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        {/* LEFT */}
+        <Box>
+          <Typography
+            sx={{
+              fontSize: "1rem",
+              fontWeight: 600,
+              color: "#111827",
+            }}
+          >
+            {item.name}
+          </Typography>
 
-        <Typography sx={{ mb: 2 }}>₹ {item.price}</Typography>
+          <Typography
+            sx={{
+              mt: 0.5,
+              fontSize: "0.9rem",
+              color: "#6b7280",
+            }}
+          >
+            ₹ {item.price}
+          </Typography>
+        </Box>
 
-        <Stack direction="row" spacing={2}>
+        {/* RIGHT */}
+        <Stack direction="row" spacing={1.5}>
           <Button
             variant="outlined"
-            startIcon={<EditIcon />}
+            startIcon={<EditOutlinedIcon />}
             onClick={() => editItem(item)}
+            sx={{
+              borderRadius: "12px",
+              textTransform: "none",
+              fontWeight: 600,
+              borderColor: "#dbe3ea",
+              color: "#111827",
+              minWidth: "100px",
+            }}
           >
             Edit
           </Button>
 
           <Button
             variant="contained"
-            color="error"
-            startIcon={<DeleteIcon />}
+            startIcon={<DeleteOutlineOutlinedIcon />}
             onClick={() => removeItem(item.id)}
+            sx={{
+              borderRadius: "12px",
+              textTransform: "none",
+              fontWeight: 600,
+              minWidth: "110px",
+              backgroundColor: "#ef4444",
+              boxShadow: "none",
+
+              "&:hover": {
+                backgroundColor: "#dc2626",
+                boxShadow: "none",
+              },
+            }}
           >
             Remove
           </Button>
         </Stack>
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 }
 
