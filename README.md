@@ -23,11 +23,11 @@ A modern shopping cart application built using React and Material UI.
 
 ## Live Demo
 
-https://your-vercel-link.vercel.app
+https://shopping-cart-one-snowy.vercel.app/
 
 ## GitHub Repository
 
-https://github.com/your-username/shopping-cart-assignment
+https://github.com/MANOJ-M-007/shopping-cart.git
 
 ## Installation
 
