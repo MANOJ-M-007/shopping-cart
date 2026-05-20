@@ -1,7 +1,19 @@
-function CartItem() {
+function CartItem({ item, removeItem }) {
   return (
-    <div>
-      <p>Cart Item</p>
+    <div
+      style={{
+        border: "1px solid gray",
+        padding: "10px",
+        marginBottom: "10px",
+      }}
+    >
+      <h3>{item.name}</h3>
+
+      <p>₹ {item.price}</p>
+
+      <button>Edit</button>
+
+      <button onClick={() => removeItem(item.id)}>Remove</button>
     </div>
   );
 }
