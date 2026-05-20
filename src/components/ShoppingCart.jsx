@@ -4,7 +4,6 @@ import {
   Box,
   Divider,
 } from "@mui/material";
-
 import CartItem from "./CartItem";
 
 function ShoppingCart({

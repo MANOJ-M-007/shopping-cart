@@ -1,7 +1,5 @@
 import { Box, Typography, Button, Stack } from "@mui/material";
-
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function CartItem({ item, removeItem, editItem }) {
@@ -12,14 +10,30 @@ function CartItem({ item, removeItem, editItem }) {
         borderBottom: "1px solid #eef2f7",
       }}
     >
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        {/* LEFT */}
-        <Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          gap: 2,
+        }}
+      >
+        {/* LEFT SIDE */}
+        <Box
+          sx={{
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
           <Typography
             sx={{
               fontSize: "1rem",
               fontWeight: 600,
               color: "#111827",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
             }}
           >
             {item.name}
@@ -36,8 +50,14 @@ function CartItem({ item, removeItem, editItem }) {
           </Typography>
         </Box>
 
-        {/* RIGHT */}
-        <Stack direction="row" spacing={1.5}>
+        {/* RIGHT SIDE */}
+        <Stack
+          direction="row"
+          spacing={1.5}
+          sx={{
+            flexShrink: 0,
+          }}
+        >
           <Button
             variant="outlined"
             startIcon={<EditOutlinedIcon />}
@@ -48,7 +68,8 @@ function CartItem({ item, removeItem, editItem }) {
               fontWeight: 600,
               borderColor: "#dbe3ea",
               color: "#111827",
-              minWidth: "100px",
+              minWidth: "95px",
+              height: "42px",
             }}
           >
             Edit
@@ -63,6 +84,7 @@ function CartItem({ item, removeItem, editItem }) {
               textTransform: "none",
               fontWeight: 600,
               minWidth: "110px",
+              height: "42px",
               backgroundColor: "#ef4444",
               boxShadow: "none",
 

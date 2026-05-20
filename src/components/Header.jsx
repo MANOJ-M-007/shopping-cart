@@ -1,5 +1,4 @@
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
-
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function Header() {
