@@ -1,4 +1,4 @@
-function CartItem({ item, removeItem }) {
+function CartItem({ item, removeItem, editItem }) {
   return (
     <div
       style={{
@@ -11,7 +11,7 @@ function CartItem({ item, removeItem }) {
 
       <p>₹ {item.price}</p>
 
-      <button>Edit</button>
+      <button onClick={() => editItem(item)}>Edit</button>
 
       <button onClick={() => removeItem(item.id)}>Remove</button>
     </div>

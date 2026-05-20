@@ -5,6 +5,7 @@ import AddItemForm from "./components/AddItemForm";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [editingItem, setEditingItem] = useState(null);
 
   const addItem = (newItem) => {
     setItems([...items, newItem]);
@@ -16,13 +17,31 @@ function App() {
     setItems(updatedItems);
   };
 
+  const editItem = (item) => {
+    setEditingItem(item);
+  };
+
+  const updateItem = (updatedItem) => {
+    const updatedItems = items.map((item) =>
+      item.id === updatedItem.id ? updatedItem : item,
+    );
+
+    setItems(updatedItems);
+
+    setEditingItem(null);
+  };
+
   return (
     <div>
       <h1>Shopping Cart Application</h1>
 
-      <AddItemForm addItem={addItem} />
+      <AddItemForm
+        addItem={addItem}
+        editingItem={editingItem}
+        updateItem={updateItem}
+      />
 
-      <ShoppingCart items={items} removeItem={removeItem} />
+      <ShoppingCart items={items} removeItem={removeItem} editItem={editItem} />
     </div>
   );
 }

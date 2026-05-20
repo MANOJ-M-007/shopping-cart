@@ -1,20 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function AddItemForm({ addItem }) {
+function AddItemForm({
+  addItem,
+  editingItem,
+  updateItem,
+}) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+
+  useEffect(() => {
+    if (editingItem) {
+      setName(editingItem.name);
+      setPrice(editingItem.price);
+    }
+  }, [editingItem]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newItem = {
-      id: uuidv4(),
-      name,
-      price: Number(price),
-    };
+    if (!name || !price) {
+      return;
+    }
 
-    addItem(newItem);
+    if (editingItem) {
+      const updatedItem = {
+        id: editingItem.id,
+        name,
+        price: Number(price),
+      };
+
+      updateItem(updatedItem);
+    } else {
+      const newItem = {
+        id: uuidv4(),
+        name,
+        price: Number(price),
+      };
+
+      addItem(newItem);
+    }
 
     setName("");
     setPrice("");
@@ -22,7 +47,9 @@ function AddItemForm({ addItem }) {
 
   return (
     <div>
-      <h2>Add Item</h2>
+      <h2>
+        {editingItem ? "Edit Item" : "Add Item"}
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -39,7 +66,11 @@ function AddItemForm({ addItem }) {
           onChange={(e) => setPrice(e.target.value)}
         />
 
-        <button type="submit">Add Item</button>
+        <button type="submit">
+          {editingItem
+            ? "Update Item"
+            : "Add Item"}
+        </button>
       </form>
     </div>
   );

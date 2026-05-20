@@ -1,6 +1,10 @@
 import CartItem from "./CartItem";
 
-function ShoppingCart({ items, removeItem }) {
+function ShoppingCart({
+  items,
+  removeItem,
+  editItem,
+}) {
   return (
     <div>
       <h2>Shopping Cart</h2>
@@ -13,6 +17,7 @@ function ShoppingCart({ items, removeItem }) {
             key={item.id}
             item={item}
             removeItem={removeItem}
+            editItem={editItem}
           />
         ))
       )}
