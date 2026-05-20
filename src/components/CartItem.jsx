@@ -1,5 +1,7 @@
 import { Box, Typography, Button, Stack } from "@mui/material";
+
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function CartItem({ item, removeItem, editItem }) {
@@ -13,27 +15,38 @@ function CartItem({ item, removeItem, editItem }) {
       <Box
         sx={{
           display: "flex",
-          alignItems: "center",
+
+          flexDirection: {
+            xs: "column",
+            sm: "row",
+          },
+
+          alignItems: {
+            xs: "flex-start",
+            sm: "center",
+          },
+
           justifyContent: "space-between",
-          width: "100%",
+
           gap: 2,
         }}
       >
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <Box
           sx={{
-            flex: 1,
+            width: "100%",
             minWidth: 0,
           }}
         >
           <Typography
             sx={{
               fontSize: "1rem",
+
               fontWeight: 600,
+
               color: "#111827",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
+
+              wordBreak: "break-word",
             }}
           >
             {item.name}
@@ -42,7 +55,9 @@ function CartItem({ item, removeItem, editItem }) {
           <Typography
             sx={{
               mt: 0.5,
+
               fontSize: "0.9rem",
+
               color: "#6b7280",
             }}
           >
@@ -50,11 +65,19 @@ function CartItem({ item, removeItem, editItem }) {
           </Typography>
         </Box>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
         <Stack
-          direction="row"
+          direction={{
+            xs: "column",
+            sm: "row",
+          }}
           spacing={1.5}
           sx={{
+            width: {
+              xs: "100%",
+              sm: "auto",
+            },
+
             flexShrink: 0,
           }}
         >
@@ -62,14 +85,19 @@ function CartItem({ item, removeItem, editItem }) {
             variant="outlined"
             startIcon={<EditOutlinedIcon />}
             onClick={() => editItem(item)}
+            fullWidth
             sx={{
               borderRadius: "12px",
+
               textTransform: "none",
+
               fontWeight: 600,
+
               borderColor: "#dbe3ea",
+
               color: "#111827",
-              minWidth: "95px",
-              height: "42px",
+
+              minHeight: "42px",
             }}
           >
             Edit
@@ -79,17 +107,23 @@ function CartItem({ item, removeItem, editItem }) {
             variant="contained"
             startIcon={<DeleteOutlineOutlinedIcon />}
             onClick={() => removeItem(item.id)}
+            fullWidth
             sx={{
               borderRadius: "12px",
+
               textTransform: "none",
+
               fontWeight: 600,
-              minWidth: "110px",
-              height: "42px",
+
+              minHeight: "42px",
+
               backgroundColor: "#ef4444",
+
               boxShadow: "none",
 
               "&:hover": {
                 backgroundColor: "#dc2626",
+
                 boxShadow: "none",
               },
             }}

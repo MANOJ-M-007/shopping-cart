@@ -75,8 +75,20 @@ function App() {
           <Box
             sx={{
               display: "flex",
+              flexDirection: {
+                xs: "column",
+                md: "row",
+              },
+
               justifyContent: "space-between",
-              alignItems: "center",
+
+              alignItems: {
+                xs: "stretch",
+                md: "center",
+              },
+
+              gap: 2.5,
+
               mb: 4,
             }}
           >
@@ -84,9 +96,15 @@ function App() {
             <Box>
               <Typography
                 sx={{
-                  fontSize: "2.2rem",
+                  fontSize: {
+                    xs: "1.8rem",
+                    sm: "2rem",
+                  },
+
                   fontWeight: 700,
+
                   color: "#111827",
+
                   lineHeight: 1.2,
                 }}
               >
@@ -96,7 +114,12 @@ function App() {
               <Typography
                 sx={{
                   mt: 1,
-                  fontSize: "0.95rem",
+
+                  fontSize: {
+                    xs: "0.9rem",
+                    sm: "0.95rem",
+                  },
+
                   color: "#6b7280",
                 }}
               >
@@ -109,15 +132,30 @@ function App() {
               variant="contained"
               startIcon={<AddIcon />}
               onClick={handleAddClick}
+              fullWidth={window.innerWidth < 900}
               sx={{
                 height: "48px",
+
                 px: 3,
+
+                width: {
+                  xs: "100%",
+                  md: "180px",
+                },
+
                 borderRadius: "14px",
+
                 textTransform: "none",
+
                 fontWeight: 600,
+
                 fontSize: "0.95rem",
+
                 backgroundColor: "#111827",
+
                 boxShadow: "none",
+
+                flexShrink: 0,
 
                 "&:hover": {
                   backgroundColor: "#1f2937",
