@@ -1,27 +1,37 @@
+import { Paper, Typography, Box } from "@mui/material";
+
 import CartItem from "./CartItem";
 
-function ShoppingCart({
-  items,
-  removeItem,
-  editItem,
-}) {
+function ShoppingCart({ items, removeItem, editItem }) {
+  const totalPrice = items.reduce((total, item) => total + item.price, 0);
+
   return (
-    <div>
-      <h2>Shopping Cart</h2>
+    <Paper sx={{ p: 3 }}>
+      <Typography variant="h5" gutterBottom>
+        Shopping Cart
+      </Typography>
 
       {items.length === 0 ? (
-        <p>No items in cart</p>
+        <Box py={4}>
+          <Typography align="center">Your shopping cart is empty.</Typography>
+        </Box>
       ) : (
-        items.map((item) => (
-          <CartItem
-            key={item.id}
-            item={item}
-            removeItem={removeItem}
-            editItem={editItem}
-          />
-        ))
+        <>
+          {items.map((item) => (
+            <CartItem
+              key={item.id}
+              item={item}
+              removeItem={removeItem}
+              editItem={editItem}
+            />
+          ))}
+
+          <Typography variant="h6" sx={{ mt: 3 }}>
+            Total: ₹ {totalPrice}
+          </Typography>
+        </>
       )}
-    </div>
+    </Paper>
   );
 }
 

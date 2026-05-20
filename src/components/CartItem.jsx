@@ -1,20 +1,36 @@
+import { Card, CardContent, Typography, Button, Stack } from "@mui/material";
+
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 function CartItem({ item, removeItem, editItem }) {
   return (
-    <div
-      style={{
-        border: "1px solid gray",
-        padding: "10px",
-        marginBottom: "10px",
-      }}
-    >
-      <h3>{item.name}</h3>
+    <Card sx={{ mb: 2 }}>
+      <CardContent>
+        <Typography variant="h6">{item.name}</Typography>
 
-      <p>₹ {item.price}</p>
+        <Typography sx={{ mb: 2 }}>₹ {item.price}</Typography>
 
-      <button onClick={() => editItem(item)}>Edit</button>
+        <Stack direction="row" spacing={2}>
+          <Button
+            variant="outlined"
+            startIcon={<EditIcon />}
+            onClick={() => editItem(item)}
+          >
+            Edit
+          </Button>
 
-      <button onClick={() => removeItem(item.id)}>Remove</button>
-    </div>
+          <Button
+            variant="contained"
+            color="error"
+            startIcon={<DeleteIcon />}
+            onClick={() => removeItem(item.id)}
+          >
+            Remove
+          </Button>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 }
 

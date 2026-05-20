@@ -1,10 +1,24 @@
 import { useEffect, useState } from "react";
+
 import { v4 as uuidv4 } from "uuid";
+
+import toast from "react-hot-toast";
+
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  TextField,
+  Button,
+  Stack,
+} from "@mui/material";
 
 function AddItemForm({
   addItem,
   editingItem,
   updateItem,
+  openModal,
+  setOpenModal,
 }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -13,13 +27,24 @@ function AddItemForm({
     if (editingItem) {
       setName(editingItem.name);
       setPrice(editingItem.price);
+    } else {
+      setName("");
+      setPrice("");
     }
   }, [editingItem]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !price) {
+    if (!name.trim()) {
+      toast.error("Item name is required");
+
+      return;
+    }
+
+    if (!price || Number(price) <= 0) {
+      toast.error("Price must be greater than 0");
+
       return;
     }
 
@@ -46,33 +71,41 @@ function AddItemForm({
   };
 
   return (
-    <div>
-      <h2>
-        {editingItem ? "Edit Item" : "Add Item"}
-      </h2>
+    <Dialog
+      open={openModal}
+      onClose={() => setOpenModal(false)}
+      fullWidth
+      maxWidth="sm"
+    >
+      <DialogTitle>{editingItem ? "Edit Item" : "Add Item"}</DialogTitle>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter item name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+      <DialogContent>
+        <form onSubmit={handleSubmit}>
+          <Stack spacing={2} mt={1}>
+            <TextField
+              label="Item Name"
+              variant="outlined"
+              fullWidth
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-        <input
-          type="number"
-          placeholder="Enter item price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
+            <TextField
+              label="Price"
+              type="number"
+              variant="outlined"
+              fullWidth
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
 
-        <button type="submit">
-          {editingItem
-            ? "Update Item"
-            : "Add Item"}
-        </button>
-      </form>
-    </div>
+            <Button variant="contained" type="submit">
+              {editingItem ? "Update Item" : "Add Item"}
+            </Button>
+          </Stack>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 }
 
