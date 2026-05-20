@@ -1,16 +1,37 @@
-# React + Vite
+# Shopping Cart Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern shopping cart application built using React and Material UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new cart items
+- Edit existing items
+- Remove items from cart
+- Real-time total calculation
+- Toast notifications
+- Responsive modern UI
+- Modal-based add/edit workflow
+- Sticky header with scrollable cart section
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- Material UI
+- React Hot Toast
+- UUID
 
-## Expanding the ESLint configuration
+## Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+https://your-vercel-link.vercel.app
+
+## GitHub Repository
+
+https://github.com/your-username/shopping-cart-assignment
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/shopping-cart-assignment.git
