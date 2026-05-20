@@ -70,7 +70,15 @@ function App() {
           py: 5,
         }}
       >
-        <Container maxWidth="lg">
+        <Container
+          maxWidth="lg"
+          sx={{
+            px: {
+              xs: 2,
+              sm: 3,
+            },
+          }}
+        >
           {/* TOP SECTION */}
           <Box
             sx={{

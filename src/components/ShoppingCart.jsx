@@ -1,26 +1,17 @@
-import {
-  Paper,
-  Typography,
-  Box,
-  Divider,
-} from "@mui/material";
+import { Paper, Typography, Box, Divider } from "@mui/material";
 import CartItem from "./CartItem";
 
-function ShoppingCart({
-  items,
-  removeItem,
-  editItem,
-}) {
-  const totalPrice = items.reduce(
-    (total, item) => total + item.price,
-    0
-  );
+function ShoppingCart({ items, removeItem, editItem }) {
+  const totalPrice = items.reduce((total, item) => total + item.price, 0);
 
   return (
     <Paper
       elevation={0}
       sx={{
-        height: "70vh",
+        height: {
+          xs: "65vh",
+          md: "70vh",
+        },
         borderRadius: "24px",
         border: "1px solid #eef2f7",
         backgroundColor: "#ffffff",
@@ -38,11 +29,7 @@ function ShoppingCart({
           pb: 2,
         }}
       >
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography
             sx={{
               fontSize: "1.4rem",
@@ -132,11 +119,7 @@ function ShoppingCart({
       >
         <Divider sx={{ mb: 3 }} />
 
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography
             sx={{
               color: "#6b7280",
